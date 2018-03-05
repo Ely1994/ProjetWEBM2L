@@ -7,7 +7,7 @@ Donc comme ça, l'utilisateur est déconnectée.
 // Session start
 session_start();
 // include
-include_once "../dataacces/fonction.lib.php";
+include_once "../lib/fonction.lib.php";
 // appel redirection
 if(!isset($_SESSION['login']) && !isset($_SESSION['mdp'])) {
     redirection('http://localhost/Try8/Try8/views/connexion.php');
@@ -29,6 +29,6 @@ if(!isset($_SESSION['login']) && !isset($_SESSION['mdp'])) {
 </head>
 <body>
     <?php
-    header('Location:M2Lconnexion.php', false);
+    header('Location:connexion.php', false);
     ?>
 </html>

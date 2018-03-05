@@ -20,8 +20,8 @@ if(isset($_POST['login']) && isset($_POST['motdepasse'])) {
 }
 // appel redirection
 if(!isset($_SESSION['login']) && !isset($_SESSION['mdp'])) {
-    //redirection('http://localhost/projet1/pjr/vues/M2Lconnexion.php');
-    ?> <script type='text/javascript'>document.location.replace('M2Lconnexion.php');</script> <?php
+    //redirection('http://localhost/Try8/Try8/views/connexion.php');
+    ?> <script type='text/javascript'>document.location.replace('connexion.php');</script> <?php
 }
 // incrementation cookie (LIGHT)
 if(isset($_COOKIE['holycookie'])==TRUE) {
