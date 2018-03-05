@@ -4,11 +4,13 @@ footer {
     margin-top: 25px;
 }
 .FOT_cont-text {
+    padding: 8px 0px;
     background-color: #444;
+    color: white;
 }
 .FOT_texte {
     font-size: 15px;
-    color: #eee;
+    color: white;
 }
 .FOL_cont-lien {
     margin-top: 15px;
