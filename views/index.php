@@ -2,14 +2,14 @@
 // Session start
 session_start();
 // include
-include_once "../dataacces/M2Lformation.lib.php";
-include_once "../dataacces/Rectangle.inc.php";
-include_once "../dataacces/Livre.inc.php";
-include_once "../dataacces/Librairie.inc.php";
+include_once "../lib/fonction.lib.php";
+include_once "../old_ones/Rectangle.inc.php";
+include_once "../old_ones/Livre.inc.php";
+include_once "../old_ones/Librairie.inc.php";
 
 // appel redirection
 if(!isset($_SESSION['login']) && !isset($_SESSION['code'])) {
-    redirection('http://localhost/projet1/pjr/vues/M2Lconnexion.php');
+    redirection('http://localhost/Try8/Try8/views/connexion.php');
 }
 // incrementation cookie (LIGHT)
 if(isset($_COOKIE['holycookie'])==TRUE) {

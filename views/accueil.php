@@ -2,10 +2,10 @@
 // Session start
 session_start();
 // include
-include_once "../lib/M2Lformation.lib.php";
+include_once "../lib/fonction.lib.php";
 // appel redirection
 if(!isset($_SESSION['login']) && !isset($_SESSION['mdp'])) {
-    redirection('http://localhost/projet1/pjr/vues/M2Lconnexion.php');
+    redirection('http://localhost/Try8/Try8/views/connexion.php');
 }
 // incrémentation cookie (DARK)
 if(isset($_COOKIE['darkcookie'])==TRUE) { // On s'occupe du dark cookie

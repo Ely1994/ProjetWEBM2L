@@ -1,6 +1,6 @@
 <nav>
     <div class="NA1_cont-drop"> <!-- -->
-        <a class="NA1_lien" href="../vues/M2Laccueil.php">Accueil (eh ué!)</a>
+        <a class="NA1_lien" href="../views/accueil.php">Accueil (eh ué!)</a>
         <div class="NA1_list-lien">
             <a href="#">La formation uno</a>
             <a href="#">La formasion quatro</a>

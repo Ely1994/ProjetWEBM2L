@@ -2,10 +2,10 @@
 // Session start
 session_start();
 // include
-include_once "../lib/M2Lformation.lib.php";
+include_once "../lib/formation.lib.php";
 // appel redirection
 if(isset($_SESSION['login']) && !isset($_SESSION['code'])) {
-    redirection('http://localhost/projet1/pjr/vues/M2Lprofil.php');
+    redirection('http://localhost/Try8/Try8/views/profil.php');
 }
 ?>
 

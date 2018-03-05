@@ -2,7 +2,7 @@
 // Session start
 session_start();
 // include
-include_once "../lib/M2Lconnexion.lib.php";
+include_once "../lib/connexion.lib.php";
 // - - - - - gestion de la connexion - - - - - 
 if(isset($_POST['login']) && isset($_POST['motdepasse'])) {
     if(estPresent($_POST['login'],$_POST['motdepasse']) == TRUE) { // identifiants de connexion présents

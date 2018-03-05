@@ -23,10 +23,10 @@ résumé : HE, HEL, HET, HEC.
 ?>
         <div class="HEC_cont-carre">
             <div class="HEC_carre">
-                <a class="HEC_lien" href="../vues/M2Lprofil.php">Page de profil</a>
+                <a class="HEC_lien" href="../views/profil.php">Page de profil</a>
                 <div class="HEC_drop-cont">
                     <span>OU</span>
-                    <a class="HEC_drop-lien" href="../vues/M2Ldeconnexion.php">Se déconnecter</a>
+                    <a class="HEC_drop-lien" href="../views/deconnexion.php">Se déconnecter</a>
                 </div>
             </div>
         </div>
@@ -35,10 +35,10 @@ résumé : HE, HEL, HET, HEC.
 ?>
         <div class="HEC_cont-carre">
             <div class="HEC_carre">
-                <a class="HEC_lien" href="../vues/M2Lconnexion.php">Se connecter</a>
+                <a class="HEC_lien" href="../views/connexion.php">Se connecter</a>
                 <div class="HEC_drop-cont">
                     <span>OU</span>
-                    <a class="HEC_drop-lien" href="../vues/M2Linscription.php">S'inscrire</a>
+                    <a class="HEC_drop-lien" href="../views/inscription.php">S'inscrire</a>
                     <!--
                     <div class="HEC_drop-lien">
                         <a href="#">S'inscrire</a>

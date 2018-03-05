@@ -2,10 +2,10 @@
 // Session start
 session_start();
 // include
-include_once "../lib/M2Lformation.lib.php";
+include_once "../lib/fonction.lib.php";
 // appel redirection
 if(isset($_SESSION['login']) && !isset($_SESSION['code'])) {
-    redirection('http://localhost/projet1/pjr/vues/M2Lprofil.php');
+    redirection('http://localhost/Try8/Try8/views/profil.php');
 }
 ?>
 
@@ -26,7 +26,7 @@ if(isset($_SESSION['login']) && !isset($_SESSION['code'])) {
     <?php include '../inc/nav.inc.php'; ?>
     <?php
     if(isset($_SESSION['login'])) { // SI connecté redirige vers l'accueil.  
-        redirection('http://localhost/projet1/pjr/vues/M2Laccueil.php'); 
+        redirection('http://localhost/Try8/Try8/views/accueil.php'); 
     } else { // SI pas connecté 
     ?>
     <section class="CON_cont-co">
