@@ -1,0 +1,2 @@
+Bonjour,
+DataAcces est un dossier ne contenant que des fichiers php ayant des fonctions en rapport avec SQL et la connexion à la base de données.

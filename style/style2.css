@@ -1,0 +1,99 @@
+ul {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+
+body {
+    background-color: rgb(20, 20, 20);
+    font-size: 14px;
+    color: white;
+}
+h1 {
+    font-size: 28;
+    font-style: bold;
+}
+h2 {
+    font-size: 21;
+    font-style: bold;
+}
+
+#conteneur { /* contient tout le code */
+    width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+section {
+    background-color: rgb(125, 125, 200);
+    padding: 5px;
+    margin: 5px;
+}
+
+/* le bandeau qui est apporté par le fichier M2Lbandeau.inc.php */
+#bandeau {
+    background-color: rgb(200, 200, 255);
+    color: black;
+    text-align: center;
+    padding: 15px;
+    margin: 25;
+}
+#miseEnPage{
+    display: flex;
+	flex-wrap: wrap; 
+}
+.mep {
+    height:auto;
+	min-height: 50px;
+}
+.mep:nth-child(1) {
+    flex: 2;
+}
+.mep:nth-child(2) {
+    flex: 4;
+}
+.mep:nth-child(3) {
+    flex: 2;
+}
+
+/* Allons maintenant voir du côté du navigateur, avec le fichier M2Lliens.inc.php */
+nav {
+    padding: 5px;
+    background-color: rgb(200, 200, 255);
+	color: black;
+}
+nav ul {
+	display:flex;
+	direction:inline;
+	list-style:none;
+	justify-content:space-between;
+}
+nav ul li {
+	display:inline-block;
+	width: 20%;
+    padding: 5px;
+    margin: 0px;
+	text-align:center;
+}
+nav ul li:hover {
+    font-weight:bold;
+    background-color: rgb(175, 175, 230);
+}
+
+/* Le bas de page, c'est cool aussi tu vois :) */
+footer {
+    padding: 5px;
+    background-color: rgb(175, 175, 230);
+	color: black;
+}
+
+/* ici on s'intéresse à des classes qui foont des trucs */
+.letop {
+    position: absolute;
+    top: 12px;
+    right: 180px;
+}

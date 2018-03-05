@@ -1,0 +1,295 @@
+﻿/*reset css : certaines valeurs de mise en pages sont remises à 0 -reset css-*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, /*strong,*/ sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+body {
+	/*background: url("./img/ffxintro2.jpg") repeat-x top left, url("./img/607.jpg") fixed no-repeat 65%;*/
+	/*background-size: 34%, cover;*/
+	/* The background image */
+    background-image: url("../image/607.jpg");
+    /* Set background image to fixed (don't scroll along with the page) */
+    background-attachment: fixed;
+    /* Center the background image */
+    background-position: center;
+    /* Set the background image to no repeat */
+    background-repeat: no-repeat;
+    /* Scale the background image to be as large as possible */
+    background-size: cover;
+	font-size: 14px;
+}
+h1 {
+	font-size: 28px;
+	font: bold;
+}
+h2 {
+	font-size: 22px;
+}
+h3 {
+	font-size: 18px;
+}
+
+header {
+	background-image: url("../image/445.jpg");
+    /* Set background image to fixed (don't scroll along with the page) */
+    background-position: center;
+    /* Set the background image to no repeat */
+    background-repeat: no-repeat;
+    /* Scale the background image to be as large as possible */
+    background-size: cover;
+	text-align: center;
+	/*border: solid 1px purple;*/
+	height: 400px;
+	opacity: 1;
+	color:white;
+}
+nav {
+	/* background-color: blue; */
+	/* opacity: 0.5; */
+	margin: 0px 0% 12px 0%;
+	padding: 5px;
+	min-width: 300px;
+	color: white;
+	/* border: 1px solid cyan; */
+}
+nav ul {
+	display:flex;
+	direction:inline;
+	list-style:none;
+	justify:space-between;
+	color: blue;
+}
+nav ul li {
+	display:inline-block;
+	width: 16%;
+	padding: 5px;
+	/* background-color: white; */
+	/* opacity: 0.8; */
+	text-align:center;
+	margin: 1px;
+}
+nav ul li:hover {
+	background-color:black;
+	opacity:0.8;
+	font-weight:bold;
+}
+
+ul {
+	list-style-type:circle;
+	padding-left: 24px;
+}
+li {
+	padding-left: 0px;
+}
+
+#conteneurTriple {
+	display: flex; /* conteneur */
+	flex-wrap: wrap; 
+}
+.elementTriple {
+	height:auto;
+	min-height: 1000px;
+}
+.elementTriple:nth-child(1) {
+	/*background-color: orange;*/
+	flex: 2;
+	background-color: black;
+	color: white;
+	opacity: 0.75;
+	padding: 5px;
+	min-width:180px;
+}
+.elementTriple:nth-child(2) {
+	/*background-color: red;*/
+	width: 10px;
+}
+.elementTriple:nth-child(3) {
+	/*background-color: blue;*/
+	
+	
+	color: white;
+	opacity: 0.75;
+	padding: 5px;
+}
+.elementTriple:nth-child(4) {
+	/*background-color: red;*/
+	width: 10px;
+}
+.elementTriple:nth-child(5) {
+	/*background-color: purple;*/
+	width: 245px;
+	color: white;
+}
+
+#conteneurDouble {
+	display: flex; /* conteneur */
+	flex-wrap: wrap; 
+}
+.elementDouble {
+	height:auto;
+	min-height: 1000px;
+}
+.elementDouble:nth-child(1) {
+	/*background-color: blue;*/
+	flex:1;
+	background-color: black;
+	color: white;
+	opacity: 0.75;
+	padding: 5px;
+}
+.elementDouble:nth-child(2) {
+	/*background-color: red;*/
+	width: 10px;
+}
+.elementDouble:nth-child(3) {
+	/*background-color: purple;*/
+	width: 245px;
+	color: white;
+}
+
+#conteneurDoubleDeux {
+	display: flex; /* conteneur */
+	flex-wrap: wrap; 
+}
+.elementDoubleDeux {
+	height:auto;
+	min-height: 1000px;
+}
+.elementDoubleDeux:nth-child(1) {
+	/*background-color: blue;*/
+	flex:4;
+	background-color: black;
+	color: white;
+	opacity: 0.75;
+	padding: 5px;
+}
+.elementDoubleDeux:nth-child(2) {
+	/*background-color: red;*/
+	width: 10px;
+}
+.elementDoubleDeux:nth-child(3) {
+	/*background-color: purple;*/
+	flex:11;
+	background-color: black;
+	color: white;
+	opacity: 0.75;
+	padding: 5px;
+}
+
+
+#conteneurSimple {
+	display: flex; /* conteneur */
+	flex-wrap: wrap; 
+}
+.elementSimple {
+	height:auto;
+	min-height: 1000px;
+}
+.elementSimple:nth-child(1) {
+	flex:1;
+	background-color: black;
+	color: white;
+	opacity: 0.75;
+	padding: 5px;
+	margin: 0px 20px 0px 20px;
+}
+
+section {
+	/* background-color: #FFCCAA; */
+	margin: 0px 0px;
+	padding: 5px;
+}
+
+footer {
+	/*background-color: #AAAAFF;*/
+	text-align: center;
+	margin: 25px;
+	padding: 15px;
+	height: 800px;
+}
+h1 {
+	font-size: 32px;
+	font-family: veranda;
+}
+h2{
+	font-size:28px;
+	font-family:helvetica;
+}
+h3 {
+	font-size:22px;
+}
+
+table {
+	background-color: #33BBFF;
+	text-align: center;
+	border-collapse: collapse;
+	font-size: 12px;
+	float: left;
+	margin: 6px;
+}
+td, th{
+	border: 1px solid grey;
+}
+
+a:link{ /*lien non visité*/
+	color: blue;
+}
+a:visited{/*lien visité*/
+	color: red;
+}
+a:hover{/*souris dessus*/
+	color: purple;
+}
+a:active{/*lien selectionné*/
+	color: teal;
+	/* top: -2px; */
+}
+/* div:hover { color: red; } */
+
+/*.eleDr
+{
+float: left;
+width: 100% - 260px;
+height: 500px;
+margin-right: 10px;
+padding: 5px;
+color:#FF0000;
+background-color: #AAAAFF;
+word-wrap: break-word;
+overflow: auto;
+}*/
+/*.eleMid
+{
+float: left;
+margin-left: 10px;
+margin-right: 0px;
+width: 50%;
+
+color:#FF0000;
+background-color: #AEEAFF;
+word-wrap: break-word;
+overflow: auto;
+}*/
+/*.eleG
+{
+float: right;
+width: 260px;
+height: 800px;
+margin: 0px;
+padding: 2px;
+color:#FF0000;
+background-color: #AEEAFF;
+word-wrap: break-word;
+overflow: auto;
+}*/
+

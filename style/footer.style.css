@@ -1,0 +1,25 @@
+footer {
+    background-color: #444;
+    text-align: center;
+    margin-top: 25px;
+}
+.FOT_cont-text {
+    background-color: #444;
+}
+.FOT_texte {
+    font-size: 15px;
+    color: #eee;
+}
+.FOL_cont-lien {
+    margin-top: 15px;
+    background-color: #111;
+    height: 50px;
+    vertical-align: middle;
+}
+.FOL_lien {
+    text-decoration: none;
+    color: white;
+}
+.FOL_lien:hover  {
+    text-decoration: underline;
+}

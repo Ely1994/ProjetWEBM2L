@@ -1,0 +1,104 @@
+nav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    height: auto;
+    font-size: 0px;
+    text-align: center;
+}
+.NA1_cont-drop,
+.NA2_cont-drop,
+.NAA_cont-drop {
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 16px;
+    width: 33.333%;
+    position: relative;
+    padding: 0px;
+}
+.NA1_cont-drop a,
+.NA2_cont-drop a,
+.NAA_cont-drop a {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 10px;
+    text-decoration: none;
+}
+.NA1_cont-drop:hover .NA1_lien,
+.NA2_cont-drop:hover .NA2_lien,
+.NAA_cont-drop:hover .NAA_lien {
+    background-color: #44f;
+    text-decoration: underline;
+}
+.NA1_cont-drop:hover .NA1_list-lien,
+.NA2_cont-drop:hover .NA2_list-lien,
+.NAA_cont-drop:hover .NAA_list-lien {
+    display: block;
+}
+.NA1_lien,
+.NA2_lien,
+.NAA_lien {
+    display: inline-block;
+    background-color: #222;
+    color: white;
+    padding: 12px 0px;
+    font-size: 16px;
+}
+.NA1_lien a,
+.NA2_lien a,
+.NAA_lien a {
+    color: #fff;
+}
+.NA1_lien a:hover,
+.NA2_lien a:hover,
+.NAA_lien a:hover {
+    text-decoration: underline;
+    background-color: #44f;
+}
+.NA1_list-lien,
+.NA2_list-lien,
+.NAA_list-lien {
+    display: none;
+    position: absolute;
+    font-size: 16px;
+    background-color: #222;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.NA1_list-lien a,
+.NA2_list-lien a,
+.NAA_list-lien a {
+    color:  #fff;
+    width: 100%;
+    padding: 8px 0px;
+    text-decoration: none;
+    display: block;
+}
+.NA1_list-lien a:hover,
+.NA2_list-lien a:hover,
+.NAA_list-lien a:hover { /* Change color of dropup links on hover */
+    background-color: #44f;
+    text-decoration: underline;
+}
+@media only screen and (max-width: 700px) {
+    .NA1_cont-drop,
+    .NA2_cont-drop,
+    .NAA_cont-drop {
+        font-size: 14px;
+    }
+    .NA1_lien,
+    .NA2_lien,
+    .NAA_lien {
+        font-size: 14px;
+    }
+    .NA1_list-lien,
+    .NA2_list-lien,
+    .NAA_list-lien {
+        font-size: 14px;
+    }
+}
