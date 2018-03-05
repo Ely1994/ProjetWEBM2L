@@ -18,12 +18,9 @@ if(isset($_SESSION['login']) && !isset($_SESSION['code'])) {
     <script type="text/javascript" src="../javascript/lib.js"></script>    
     <title>M2L - Page de connexion</title>
 </head>
-<body>
-    <div id="conteneur">
-        <?php include'M2Lbandeau.inc.php'; ?>
-
-        <div class="letop"><a href="./M2Lconnexion.php" >Connexion</a> / <a href="./M2Linscription.php" >Inscription</a></div>
-
+    <body>
+        <?php include '../inc/header.inc.php'; ?>
+        <?php include '../inc/nav.inc.php'; ?>
         <section>
         <?php
         if(isset($_SESSION['profil']) || isset($_SESSION['mdp'])) { // SI connecté
@@ -34,7 +31,7 @@ if(isset($_SESSION['login']) && !isset($_SESSION['code'])) {
         ?>
             <section>
             <label>Vous pouvez vous inscrire avec ce formulaire :</label>
-            <form method="post" action="M2Lconnexion.php">
+            <form method="post" action="connexion.php">
                 <label for="pseud">Pseudo : </label><input type="text" id="profil" name="profil" size="25" placeholder="Pseudo..." maxlength="30" />
 		    	<br><label for="cod">Mot de passe : </label><input type="password" id="motdepasse" name="motdepasse" size="25" maxlength="25" />
                 <br><input type="submit" name="envoyerIns" value=" INSCRIPTION ">
@@ -60,8 +57,7 @@ if(isset($_SESSION['login']) && !isset($_SESSION['code'])) {
 			}
 			?>
         </section>
-        <?php include 'M2Lfooter.inc.php'; ?>
-    </div>
+        <?php include '../inc/footer.inc.php'; ?>
 </body>
 </html>
 <?php ?>

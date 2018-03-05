@@ -1,11 +1,11 @@
 <?php
-include_once("M2Lconnexion.lib.php");
+include_once 'connexion.lib.php';
 
 function descriptionFormationsPartielles() { // FONCTION : afichage partiel de "formation" OUTDATED
     $tab = M2LgetFormation();
     ?>
     <section>
-        <form action="M2Laccueil.php" method="post">
+        <form action="accueil.php" method="post">
         <p>Voici la liste des formations qui n'ont pas encore commencés. Vous pouvez cocher les cases puis cliquer sur le bouton "details" en bas de la page pour avoir plus de d'informations sur les formations cochés.</p>
         <p><label>Si tu veux voir toutes les formations, même celles qui sont déjà finies, clique ici : </label><input type="submit" name="toutAfficher" value="tout afficher"></p>
     </section>
@@ -37,7 +37,7 @@ function descriptionFormationsPartiellesAnciennes() { // FONCTION : afichage par
     $tab = M2LgetFormation();
     ?>
     <section>
-        <form action="M2Laccueil.php" method="post">
+        <form action="accueil.php" method="post">
         <p>Voici la liste de toutes les formations.</p>
         <p><label>Si tu veux voir seulement les formations qui n'ont pas étés commencés, <a href="./M2Laccueil.php">clique ici</a>.</p>
     </section>

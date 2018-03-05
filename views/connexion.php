@@ -32,7 +32,7 @@ if(isset($_SESSION['login']) && !isset($_SESSION['code'])) {
     <section class="CON_cont-co">
         <div class="CON_div">
         <h3>Vous pouvez vous connecter ici :</h3>
-        <form method="post" action="./M2Lprofil.php">
+        <form method="post" action="./profil.php">
             <label>Nom utilisateur : </label><input class="CON_helo" type="text" placeholder="Pseudo..." id="login" name="login" size="20" maxlength="20" />
 	    	<br><label>Mot de passe : </label><input type="password" placeholder="mot de passe" id="motdepasse" name="motdepasse" size="20" maxlength="20" />
             <br><input class="CON_submit" type="submit" name="envoyerCo" value=" CONNEXION ">

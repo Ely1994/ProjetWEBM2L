@@ -24,13 +24,16 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../style/M2Lstyle.css" />
+    <link rel="stylesheet" href="../style/main.style.css" />
+    <link rel="stylesheet" href="../style/header.style.css" />
+    <link rel="stylesheet" href="../style/nav.style.css" />
+    <link rel="stylesheet" href="../style/footer.style.css" />
     <script type="text/javascript" src="../javascript/lib.js"></script>    
     <title>M2L - Accueil</title>
 </head>
 <body>
-    <div id="conteneur">
-        <?php include'M2Lbandeau.inc.php'; ?>
+    <?php include '../inc/header.inc.php'; ?>
+        <?php include '../inc/nav.inc.php'; ?>
         <section> 
             <?php
             $livre = new Livre("AAA", 10);
@@ -89,7 +92,7 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
                 }
             }
             ?>
-            <form method="post" action="M2Lindex.php">
+            <form method="post" action="index.php">
                 <label for="nouvelle">Votre nouvelle préférée : </label>
                 <select id="nouv" name="nouvelle" required>
                 <?php
@@ -113,8 +116,8 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
             echo password_verify("toto",$hash2);
             ?>    
         </section>
-        <?php include 'M2Lfooter.inc.php'; ?>
     </div>
+    <?php include '../inc/footer.inc.php'; ?>
 </body>
 </html>
 <?php ?>
