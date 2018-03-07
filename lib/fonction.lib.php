@@ -1,6 +1,21 @@
 <?php
 include_once 'connexion.lib.php';
 
+function affichageFormation() {
+    $tab = M2LgetFormation();
+    ?>
+    <section>abc<section>
+    <?php
+    foreach($tab as $line) {
+        ?>
+        <section><h3>Description de la formation : </h3><?php echo $line['F_nom']; ?>.
+        <p>Id <?php echo $line['F_id']; ?>, <?php echo $line['F_description']; ?>, <?php echo $line['F_lieu']; ?>, <?php echo $line['F_prerequis']; ?>.</p>
+        
+        </section>
+        <?php
+    }
+}
+
 function descriptionFormationsPartielles() { // FONCTION : afichage partiel de "formation" OUTDATED
     $tab = M2LgetFormation();
     ?>

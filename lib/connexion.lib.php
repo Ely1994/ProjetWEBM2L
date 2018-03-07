@@ -12,14 +12,27 @@ function connexion() { // DATAACCES : connexion à la base de données dbpjr
 
 function M2LgetFormation() { // DATAACCES : accession à tout le contenu de formation
     $dbh = connexion();
-    $sql = 'SELECT F_id, F_nom, F_description, F_lieu, F_prerequis FROM formation WHERE date_Formation>CURDATE() ORDER BY id;';
+    //$sql = 'SELECT F_id, F_nom, F_description, F_lieu, F_prerequis FROM formation WHERE date_Formation>CURDATE() ORDER BY id;';
     /*  DESC */
     //$sql = "SELECT F_id, F_nom, F_description, F_lieu, F_prerequis, date_debut, duree_jour, duree_heure, DATE_ADD(date_debut, INTERVAL (duree_jour - 1) DAY) as date_fin FROM formation ORDER BY id DESC;";
+/*
     $prep=$dbh->prepare($sql);
     $resultat=$prep->execute(array());
     $resultat=$prep->fetchAll();
     print_r($resultat);
     return $resultat;
+*/
+
+$req='SELECT F_id, F_nom, F_description, F_lieu, F_prerequis FROM formation';
+$prep=$dbh->prepare($req);
+$resultat=$prep->execute(array());
+$resultat=$prep->fetchAll();
+
+print_r($resultat);
+return $resultat;
+
+
+
 /* vieux code
     $values = $dbh->query($sql);
     $value2 = $values->fetchAll();

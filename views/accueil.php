@@ -33,7 +33,10 @@ if(isset($_COOKIE['darkcookie'])==TRUE) { // On s'occupe du dark cookie
         <?php include '../inc/nav.inc.php'; ?>
         
         
+        <?php affichageFormation(); ?>
+        
         <?php // - - - - - - - - - - - - - - - - - - - - - - - - - Là on s'occupe de l'affichage des formations. - - - - - - - - - - - - - - - - - - - - - - - - - 
+/*
         if(!isset($_POST['checkbox'])) { // Checkbox n'existe PAS. Rien n'est coché.
             if(isset($_POST['toutAfficher'])) { // Rien n'est coché, bouton "voir les détails" appuyé => affichage de base.
                 descriptionFormationsPartiellesAnciennes();
@@ -54,6 +57,7 @@ if(isset($_COOKIE['darkcookie'])==TRUE) { // On s'occupe du dark cookie
                 ?> <section>Si ce message s'affiche, c'est qu'il y a une possibilité qui n'a pas été envisagée.</section> <?php
             }
         } // - - - - - - - - - - - - - - - - - - - - - - - - - FIN de l'affichage des formations - - - - - - - - - - - - - - - - - - - - - - - - - 
+*/
         ?>
         <?php // descriptionFormationsCompletes(); ?>
         <?php //descriptionFormationsPartielles(); ?>
