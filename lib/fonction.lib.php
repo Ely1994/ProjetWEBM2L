@@ -1,6 +1,10 @@
 <?php
 include_once 'connexion.lib.php';
 
+function jeminscrit($id) {
+    
+}
+
 function affichageFormation() {
     $tab = M2LgetFormation();
     ?>

@@ -29,7 +29,7 @@ if(isset($_POST['ins-login']) && isset($_POST['ins-motdepasse'])) {
 }
 // appel redirection
 if(!isset($_SESSION['login']) && !isset($_SESSION['mdp'])) {
-    //redirection('http://localhost/Try8/Try8/views/connexion.php');
+    redirection('http://localhost/Try8/Try8/views/connexion.php');
     ?> <!-- <script type='text/javascript'>document.location.replace('connexion.php'); </script> --> <?php
 }
 // incrementation cookie (LIGHT)
@@ -57,18 +57,17 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
     <?php include '../inc/header.inc.php'; ?>
     <?php include '../inc/nav.inc.php'; ?>
     <section>
-        <div class="SE1_titre">Bienvenue sur ta page de profil <?php echo $_SESSION['login']; ?>.
-        nzfnekjfe
-        <?php echo $_SESSION['mdp']; ?>
-        </div>
+        <div class="SE1_titre">Bienvenue sur ta page de profil <?php echo $_SESSION['login']; ?>.</div>
     </section>
     <section>
         <?php
         if(isset($_GET['check'])) {
-            foreach($_GET['check'] as $beni)
-            echo "$behi";
+            foreach($_GET['check'] as $ident) {
+
+                echo $ident;
+            }
         } else {
-            echo "rr";
+            echo "Vous n'avez pas check";
         }
             ?>
     </section>
