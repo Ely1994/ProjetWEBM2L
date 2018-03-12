@@ -16,6 +16,21 @@ body {
 	background-color: #eee;
 	font-size: 16px;
 }
+h1 {
+	font-size: 30px;
+	font-style: underline;
+}
+h2 {
+	font-size: 26px;
+	font-style: underline;
+}
+h3 {
+	font-size: 23px;
+	font-style: underline;
+}
+h4 {
+	font-size: 20px;
+}
 
 .CON_cont-co {
 	padding: 40px 0px;
@@ -56,6 +71,35 @@ section {
     padding: 16px 0px;
 }
 
+table,
+th,
+td {
+	border: 1px solid black;
+	padding: 4px 2px;
+	text-align: center;
+}
+tr:hover {
+	background-color: #bbd;
+}
+.TAB_table {
+	border-collapse: collapse;
+	background-color: #fff;
+	margin: 25px;
+}
+.TAB_submit {
+	background-color: #99e;
+	border: none;
+}
+.TAB_submit:hover {
+	background-color: rgb(97, 97, 204);
+}
+.TAB_click {
+	background-color: #ccf;
+}
+.TAB_click:hover {
+	background-color: #99e;
+}
+
 @media only screen and (max-width: 700px) {
 	.CON_div {
 		margin-left: 0%;
@@ -69,7 +113,11 @@ section {
 	}
 	.SE1_titre {
         font-size: 25px;
-    }
+	}
+	
+	.TAB_table {
+		margin: 5px;
+	}
 }
 
 @media only screen and (max-width: 500px) {

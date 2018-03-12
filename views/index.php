@@ -8,7 +8,7 @@ include_once "../old_ones/Livre.inc.php";
 include_once "../old_ones/Librairie.inc.php";
 
 // appel redirection
-if(!isset($_SESSION['login']) && !isset($_SESSION['code'])) {
+if(!isset($_SESSION['login']) && isset($_SESSION['mdp'])) {
     redirection('http://localhost/Try8/Try8/views/connexion.php');
 }
 // incrementation cookie (LIGHT)
@@ -73,11 +73,11 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
         <section>
             <h2>Petite fonction sur les requetes préparées</h2>
             <?php
-            $tabl = M2LreqPrep(3,"cours de Basket", "Cours exceptionnel de Mr. Rodriguez, visant des personnes qui connaissent déjà le sport. ");
+            //$tabl = M2LreqPrep(3,"cours de Basket", "Cours exceptionnel de Mr. Rodriguez, visant des personnes qui connaissent déjà le sport. ");
             //print_r($tabl);
-            foreach($tabl as $line) {
-                echo $line['id']." - ".$line['nom'];
-            }
+            //foreach($tabl as $line) {
+                //echo $line['id']." - ".$line['nom'];
+            //}
             ?>
         </section>
         <section>

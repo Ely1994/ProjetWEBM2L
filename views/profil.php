@@ -4,7 +4,16 @@ session_start();
 // include
 include_once "../lib/connexion.lib.php";
 // - - - - - gestion de la connexion - - - - - 
-if(isset($_POST['login']) && isset($_POST['motdepasse'])) {
+if(isset($_POST['ins-login']) && isset($_POST['ins-motdepasse'])) {
+    if(inscription($_POST['ins-login'], $_POST['ins-motdepasse']) == TRUE) {
+        $_SESSION['login'] = $_POST['ins-login'];
+        $_SESSION['mdp'] = $_POST['ins-motdepasse'];
+        $_POST['ins-login'] = null;
+        $_POST['ins-motdepasse'] = null;
+    } else {
+        //do nothing
+    }
+} elseif(isset($_POST['login']) && isset($_POST['motdepasse'])) {
     if(estPresent($_POST['login'],$_POST['motdepasse']) == TRUE) { // identifiants de connexion présents
         $_SESSION['login'] = $_POST['login'];
         $_SESSION['mdp'] = $_POST['motdepasse'];
@@ -21,7 +30,7 @@ if(isset($_POST['login']) && isset($_POST['motdepasse'])) {
 // appel redirection
 if(!isset($_SESSION['login']) && !isset($_SESSION['mdp'])) {
     //redirection('http://localhost/Try8/Try8/views/connexion.php');
-    ?> <script type='text/javascript'>document.location.replace('connexion.php');</script> <?php
+    ?> <!-- <script type='text/javascript'>document.location.replace('connexion.php'); </script> --> <?php
 }
 // incrementation cookie (LIGHT)
 if(isset($_COOKIE['holycookie'])==TRUE) {
@@ -48,9 +57,23 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
     <?php include '../inc/header.inc.php'; ?>
     <?php include '../inc/nav.inc.php'; ?>
     <section>
-        <div class="SE1_titre">Bienvenue sur ta page de profil <?php echo $_SESSION['login']; ?>.</div>
-</section>
-        <section>
+        <div class="SE1_titre">Bienvenue sur ta page de profil <?php echo $_SESSION['login']; ?>.
+        nzfnekjfe
+        <?php echo $_SESSION['mdp']; ?>
+        </div>
+    </section>
+    <section>
+        <?php
+        if(isset($_GET['check'])) {
+            foreach($_GET['check'] as $beni)
+            echo "$behi";
+        } else {
+            echo "rr";
+        }
+            ?>
+    </section>
+
+    <section>
             <p>Tu en as marre de tes cookies ? clique 
             <input type="button" value="ici" onclick="alerte()">
              pour donner tout tes cookies à Darth Jar Jar Binks.</p>

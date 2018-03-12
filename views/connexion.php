@@ -4,7 +4,7 @@ session_start();
 // include
 include_once "../lib/fonction.lib.php";
 // appel redirection
-if(isset($_SESSION['login']) && !isset($_SESSION['code'])) {
+if(isset($_SESSION['login']) && isset($_SESSION['mdp'])) {
     redirection('http://localhost/Try8/Try8/views/profil.php');
 }
 ?>
@@ -24,11 +24,7 @@ if(isset($_SESSION['login']) && !isset($_SESSION['code'])) {
 <body>
     <?php include '../inc/header.inc.php'; ?>
     <?php include '../inc/nav.inc.php'; ?>
-    <?php
-    if(isset($_SESSION['login'])) { // SI connecté redirige vers l'accueil.  
-        redirection('http://localhost/Try8/Try8/views/accueil.php'); 
-    } else { // SI pas connecté 
-    ?>
+
     <section class="CON_cont-co">
         <div class="CON_div">
         <h3>Vous pouvez vous connecter ici :</h3>
@@ -41,7 +37,7 @@ if(isset($_SESSION['login']) && !isset($_SESSION['code'])) {
     </section>
     <?php
 
-    }
+    
     ?>
 
 			<?php

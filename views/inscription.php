@@ -2,9 +2,9 @@
 // Session start
 session_start();
 // include
-include_once "../lib/formation.lib.php";
+include_once '../lib/fonction.lib.php';
 // appel redirection
-if(isset($_SESSION['login']) && !isset($_SESSION['code'])) {
+if(isset($_SESSION['login']) && isset($_SESSION['mdp'])) {
     redirection('http://localhost/Try8/Try8/views/profil.php');
 }
 ?>
@@ -14,8 +14,10 @@ if(isset($_SESSION['login']) && !isset($_SESSION['code'])) {
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../style/M2Lstyle.css" />
-    <script type="text/javascript" src="../javascript/lib.js"></script>    
+    <link rel="stylesheet" href="../style/main.style.css" />
+    <link rel="stylesheet" href="../style/header.style.css" />
+    <link rel="stylesheet" href="../style/nav.style.css" />
+    <link rel="stylesheet" href="../style/footer.style.css" />   
     <title>M2L - Page de connexion</title>
 </head>
     <body>
@@ -24,23 +26,24 @@ if(isset($_SESSION['login']) && !isset($_SESSION['code'])) {
         <section>
         <?php
         if(isset($_SESSION['profil']) || isset($_SESSION['mdp'])) { // SI connecté
-            ?>
-            <p>Salut mon ami <?php echo $_SESSION['pseudo']; ?>, ton code est : <?php echo $_SESSION['code']; ?></p>
-            <?php           
+            redirection('http://localhost/Try8/Try8/views/profil.php');
+        } elseif (isset($_POST['ins-login']) && isset($_POST['ins-motdepasse'])) {
+
         } else { // SI pas connecté
         ?>
-            <section>
-            <label>Vous pouvez vous inscrire avec ce formulaire :</label>
-            <form method="post" action="connexion.php">
-                <label for="pseud">Pseudo : </label><input type="text" id="profil" name="profil" size="25" placeholder="Pseudo..." maxlength="30" />
-		    	<br><label for="cod">Mot de passe : </label><input type="password" id="motdepasse" name="motdepasse" size="25" maxlength="25" />
-                <br><input type="submit" name="envoyerIns" value=" INSCRIPTION ">
-            </form>
+        <section class="CON_cont-co">
+            <div class="CON_div">
+                <h3>Vous pouvez vous inscrire ici :</h3>
+                <form method="post" action="./profil.php">
+                    <label>Nom utilisateur : </label><input class="CON_helo" type="text" placeholder="Pseudo..." id="ins-login" name="ins-login" size="20" maxlength="20" />
+	    	        <br><label>Mot de passe : </label><input type="password" placeholder="mot de passe" id="ins-motdepasse" name="ins-motdepasse" size="20" maxlength="20" />
+                    <br><input class="CON_submit" type="submit" name="ins-envoyerCo" value=" CONNEXION ">
+                </form>
+            </div>
+        </section>
         <?php
         }
         ?>
-        </section>
-
 
 
         <section>

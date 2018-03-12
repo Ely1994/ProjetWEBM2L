@@ -13,7 +13,7 @@ function connexion() { // DATAACCES : connexion à la base de données dbpjr
 // get the formation tableau
 function M2LgetFormation() { // DATAACCES : accession à tout le contenu de formation
     $dbh = connexion();
-    $req='SELECT F_id, F_nom, F_description, F_lieu, F_prerequis FROM formation';
+    $req='SELECT F_id, F_nom, F_description, F_lieu, F_prerequis, F_date_debut, F_duree FROM formation';
     $prep=$dbh->prepare($req);
     $resultat=$prep->execute(array());
     $resultat=$prep->fetchAll();
@@ -47,5 +47,37 @@ function estPresent($login, $mdp) {
 	} else {
 		return FALSE; } 
 }
+// htmlspecialchars()
 
+function inscription($login, $mdp) {
+    $dbh = connexion();
+    $mdp = md5($mdp);
+    $sql = "SELECT E_login, E_mdp FROM employe WHERE :E_login = E_login AND :E_mdp = E_mdp;";
+    $stmt = $dbh->prepare($sql);
+    $stmt->BindValue(':E_login', $login);
+    $stmt->BindValue(':E_mdp', $mdp);
+    $retour = $stmt->execute();
+    $retour = $stmt->fetch();
+
+    $date = ladate2();
+    $reqMax = "SELECT MAX(E_id) FROM employe";
+    $prep2 = $dbh->prepare($repMax);
+    $max = $prep2->execute(array());
+    $max = $prep2->fetch();
+    $max = $max + 1;
+    print_r($max);
+
+    if(count($retour) == 0) {
+        $sql2 = "INSERT INTO employe values('$max','unknowed', 'unknowed', '$login', '$mdp', '20', '$date', 'employe')";
+        return TRUE;
+	} else {
+        echo "Erreur : combinaison déjà existante";
+        return FALSE;
+    } 
+}
+
+function ladate2() {
+    $date = date("Y-m-d");
+    return $date;
+}
 ?>
