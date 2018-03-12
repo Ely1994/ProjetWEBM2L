@@ -25,7 +25,7 @@ if(isset($_COOKIE['darkcookie'])==TRUE) { // On s'occupe du dark cookie
     <link rel="stylesheet" href="../style/nav.style.css" />
     <link rel="stylesheet" href="../style/footer.style.css" />
     <script type="text/javascript" src="../javascript/lib.js"></script>    
-    <title>M2L - Accueil</title>
+    <title>M2L - Formations</title>
 </head>
 <body>
     <div id="conteneur">

@@ -2,12 +2,13 @@
 // Session start
 session_start();
 // include
-include_once "../lib/connexion.lib.php";
+include_once "../lib/fonction.lib.php";
 // - - - - - gestion de la connexion - - - - - 
 if(isset($_POST['ins-login']) && isset($_POST['ins-motdepasse'])) {
     if(inscription($_POST['ins-login'], $_POST['ins-motdepasse']) == TRUE) {
         $_SESSION['login'] = $_POST['ins-login'];
         $_SESSION['mdp'] = $_POST['ins-motdepasse'];
+        
         $_POST['ins-login'] = null;
         $_POST['ins-motdepasse'] = null;
     } else {
@@ -17,6 +18,7 @@ if(isset($_POST['ins-login']) && isset($_POST['ins-motdepasse'])) {
     if(estPresent($_POST['login'],$_POST['motdepasse']) == TRUE) { // identifiants de connexion présents
         $_SESSION['login'] = $_POST['login'];
         $_SESSION['mdp'] = $_POST['motdepasse'];
+        $_SESSION['id'] = chopId($_SESSION['login'], $_SESSION['mdp']);
         $_POST['login'] = null;
         $_POST['motdepasse'] = null;
     } else { // id co non présents
@@ -57,14 +59,19 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
     <?php include '../inc/header.inc.php'; ?>
     <?php include '../inc/nav.inc.php'; ?>
     <section>
-        <div class="SE1_titre">Bienvenue sur ta page de profil <?php echo $_SESSION['login']; ?>.</div>
+        <div class="SE1_titre">Bienvenue sur ta page de profil <?php echo $_SESSION['login']; ?>.<?php echo $_SESSION['mdp']; ?><?php echo $_SESSION['id']; ?></div>
     </section>
     <section>
         <?php
         if(isset($_GET['check'])) {
             foreach($_GET['check'] as $ident) {
-
-                echo $ident;
+                if(jeminscrit($ident, $_SESSION['id']) == 0) {
+                    
+                } else {
+                    echo "AAA";
+                }
+                
+                echo $ident."\n";
             }
         } else {
             echo "Vous n'avez pas check";

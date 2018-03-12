@@ -29,7 +29,7 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
     <link rel="stylesheet" href="../style/nav.style.css" />
     <link rel="stylesheet" href="../style/footer.style.css" />
     <script type="text/javascript" src="../javascript/lib.js"></script>    
-    <title>M2L - Accueil</title>
+    <title>M2L - Page de Profil</title>
 </head>
 <body>
     <?php include '../inc/header.inc.php'; ?>
