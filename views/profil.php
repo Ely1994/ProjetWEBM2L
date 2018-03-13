@@ -50,7 +50,6 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
     <link rel="stylesheet" href="../style/main.style.css" />
     <link rel="stylesheet" href="../style/header.style.css" />
     <link rel="stylesheet" href="../style/nav.style.css" />
-    <link rel="stylesheet" href="../style/section.style.css" />
     <link rel="stylesheet" href="../style/footer.style.css" />
     <script type="text/javascript" src="../javascript/lib.js"></script>    
     <title>M2L - Page de profil</title>
@@ -77,6 +76,10 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
             echo "Vous n'avez pas check";
         }
             ?>
+    </section>
+    <section>
+        <h3>Liste des formations en attente de validation</h3><!-- I_ = 1 -->
+        <?php formationAttente($_SESSION['id']); ?>
     </section>
 
     <section>

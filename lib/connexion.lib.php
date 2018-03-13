@@ -10,43 +10,17 @@ function connexion() { // DATAACCES : connexion à la base de données dbpjr
 	return $pdo;
 }
 
-// get the formation tableau
-function getFormation() { // DATAACCES : accession à tout le contenu de formation
+function reqPolyvalente($requete) {
     $dbh = connexion();
-    $req='SELECT F_id, F_nom, F_description, F_lieu, F_prerequis, F_date_debut, F_duree FROM formation';
-    $prep=$dbh->prepare($req);
+    $prep=$dbh->prepare($requete);
     $resultat=$prep->execute(array());
     $resultat=$prep->fetchAll();
-    //print_r($resultat);
     return $resultat;
 }
 
-function inscription_inscrits($F_id, $E_id) { // vérifie si existe dans "inscrits", sinon crée. _ non testée
+function insertionPolyvalente($requete) {
     $dbh = connexion();
-    $requete="SELECT formation_F_id, employe_E_id, I_statut FROM inscrits WHERE formation_F_id = \"$F_id\" AND employe_E_id = \"$E_id\";";
-    $preparation=$dbh->prepare($requete);
-    $resultat=$preparation->execute(array());
-    $resultat=$preparation->fetchAll();
-    print_r($resultat);
-    if($resultat == array()) {
-        // l'employe n'existe pas : il faut l'ajouter.
-        $ajout = "INSERT INTO inscrits VALUES (\"$F_id\", \"$E_id\", '1');";
-        $dbh->exec($ajout);
-        return 1;
-    } else {
-        // l'employe existe : .  il n'y a rien à faire (option innacessible/impossible quand site fini)
-        return 0;
-    }
-}
-
-function getE_id($login, $mdp) { // récupère le n°identifiant avec un login et un mdp
-    $dbh = connexion();
-    $requete="SELECT E_id FROM employe WHERE E_login =  \"$login\" AND E_mdp = \"$mdp\";";
-    $preparation=$dbh->prepare($requete);
-    $resultat=$preparation->execute(array());
-    $resultat=$preparation->fetch();
-    //print_r($resultat);
-    return $resultat[0];
+    $dbh->exec($requete);
 }
 
 function connectmd5() { // code en md5,  non complétée
