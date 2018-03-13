@@ -3,7 +3,9 @@ include_once 'connexion.lib.php';
 
 function jeminscrit($F_id, $E_id) { // retourne 
     $valeur = inscription_inscrits($F_id, $E_id);
-    
+    if($valeur == 1) {
+        echo "La demande de formationn à bien été prise en compte.s";
+    }
 }
 
 function chopId($login, $mdp) { // retourne la valeur de l'id de l'employe passé en paramètre
