@@ -3,11 +3,7 @@ include_once 'connexion.lib.php';
 
 function jeminscrit($F_id, $E_id) { // retourne 
     $valeur = inscription_inscrits($F_id, $E_id);
-    if($valeur == 0) {
-        echo "l'employe existe : il n'y a rien à faire (option impossible quand site fini)";
-    } else {
-
-    }
+    
 }
 
 function chopId($login, $mdp) { // retourne la valeur de l'id de l'employe passé en paramètre

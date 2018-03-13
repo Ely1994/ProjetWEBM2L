@@ -28,15 +28,13 @@ function inscription_inscrits($F_id, $E_id) { // vérifie si existe dans "inscri
     $resultat=$preparation->execute(array());
     $resultat=$preparation->fetchAll();
     print_r($resultat);
-    if($resultat != 0) {
-        // l'employe existe : il n'y a rien à faire (option impossible quand site fini)
-        return 0;
-    } else {
+    if($resultat == array()) {
         // l'employe n'existe pas : il faut l'ajouter.
-
+        $ajout = "INSERT INTO inscrits VALUES (\"$F_id\", \"$E_id\", '1');";
+        $dbh->exec($ajout);
+    } else {
+        // l'employe existe : .  il n'y a rien à faire (option innacessible/impossible quand site fini)
     }
-    return $resultat;
-
 }
 
 function getE_id($login, $mdp) { // récupère le n°identifiant avec un login et un mdp
