@@ -32,8 +32,10 @@ function inscription_inscrits($F_id, $E_id) { // vérifie si existe dans "inscri
         // l'employe n'existe pas : il faut l'ajouter.
         $ajout = "INSERT INTO inscrits VALUES (\"$F_id\", \"$E_id\", '1');";
         $dbh->exec($ajout);
+        return 1;
     } else {
         // l'employe existe : .  il n'y a rien à faire (option innacessible/impossible quand site fini)
+        return 0;
     }
 }
 
