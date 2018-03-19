@@ -15,7 +15,7 @@ if(isset($_POST['ins-login']) && isset($_POST['ins-motdepasse'])) {
         //do nothing
     }
 } elseif(isset($_POST['login']) && isset($_POST['motdepasse'])) {
-    if(estPresent($_POST['login'],$_POST['motdepasse']) == TRUE) { // identifiants de connexion présents
+    if(estPresent2($_POST['login'],$_POST['motdepasse']) == TRUE) { // identifiants de connexion présents
         $_SESSION['login'] = $_POST['login'];
         $_SESSION['mdp'] = $_POST['motdepasse'];
         $_SESSION['id'] = chopId($_SESSION['login'], $_SESSION['mdp']);
@@ -58,7 +58,7 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
     <?php include '../inc/header.inc.php'; ?>
     <?php include '../inc/nav.inc.php'; ?>
     <section>
-        <div class="SE1_titre">Bienvenue sur ta page de profil <?php echo $_SESSION['login']; ?>.<?php echo $_SESSION['mdp']; ?><?php echo $_SESSION['id']; ?></div>
+        <div class="SE1_titre">Bienvenue sur ta page de profil <?php echo $_SESSION['login']; ?>.<?php echo $_SESSION['mdp']; ?><?php echo $_SESSION['id'];?></div>
     </section>
     <section>
         <?php

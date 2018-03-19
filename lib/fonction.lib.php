@@ -53,7 +53,9 @@ function jeminscrit($F_id, $E_id) {
 }
 
 function chopId($login, $mdp) { // retourne la valeur de l'id de l'employe passé en paramètre
-    return reqPolyvalente("SELECT E_id FROM employe WHERE E_login =  \"$login\" AND E_mdp = \"$mdp\";");
+    $abc = reqPolyvalente("SELECT E_id FROM employe WHERE E_login =  \"$login\" AND E_mdp = \"$mdp\";");
+    $abc = $abc[0]['E_id'];
+    return $abc;
 }
 
 function affichageFormation() {
@@ -94,6 +96,9 @@ function affichageFormation() {
     ?> </table> </form> </section> <?php
 }
 
+function estPresent2($a, $b) {
+    return estPresent($a, $b);
+}
 
 function redirection($cible) { //fonction de redirection sur une page 
     header('Location:'.$cible, false);

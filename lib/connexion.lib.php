@@ -15,6 +15,7 @@ function reqPolyvalente($requete) {
     $prep=$dbh->prepare($requete);
     $resultat=$prep->execute(array());
     $resultat=$prep->fetchAll();
+    //print_r($resultat);
     return $resultat;
 }
 
