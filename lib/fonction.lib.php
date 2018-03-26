@@ -40,6 +40,54 @@ function formationAttente($id) {
     ?> <table> <?php
 }
 
+function formationValides($id) {
+    $tab = reqPolyvalente("SELECT F_id, F_nom, F_description, F_lieu, F_prerequis, F_date_debut, F_duree FROM formation INNER JOIN inscrits ON formation.F_id = inscrits.formation_F_id WHERE employe_E_id = \"$id\" AND I_statut = '2';");
+    // "SELECT formation_F_id, employe_E_id, I_statut FROM inscrits WHERE employe_E_id = \"$id\" AND I_statut = '1';"
+    ?>
+    <table class="TAB_table">
+    <tr>
+        <th>Id</th>
+        <th>nom</th>
+        <th>Description</th>
+        <th>Lieu</th>
+        <th>Prérequis</th>
+        <th>Date_début</th>
+        <th>Durée</th>
+    </tr>
+    <?php
+    if($tab == array()) {
+        ?>
+        <tr>
+            <td colspan="7">Vous n'avez aucune formation en attente de validation</td>
+        </tr>
+        <?php
+    } else {
+        foreach($tab as $line) {
+            ?>
+            <tr>
+                <td><?php echo $line['F_id']; ?></td>
+                <td><?php echo $line['F_nom']; ?></td>
+                <td><?php echo $line['F_description']; ?></td>
+                <td><?php echo $line['F_lieu']; ?></td>
+                <td><?php echo $line['F_prerequis']; ?></td>
+                <td><?php echo $line['F_date_debut']; ?></td>
+                <td><?php echo $line['F_duree']; ?></td>
+            </tr>
+            <?php
+        }
+    }
+    ?> <table> <?php
+}
+
+function estGrade($E_id) {
+    $array = reqPolyvalente("SELECT E_statut FROM employe WHERE E_id = \"$E_id\";");
+    if($array[0]['E_statut'] == "chef") {
+        return $array;
+    } else {
+        return false;
+    }
+}
+
 function jeminscrit($F_id, $E_id) {
     $valeur = reqPolyvalente("SELECT formation_F_id, employe_E_id, I_statut FROM inscrits WHERE formation_F_id = \"$F_id\" AND employe_E_id = \"$E_id\";");
     if($valeur == array()) {
@@ -59,10 +107,12 @@ function chopId($login, $mdp) { // retourne la valeur de l'id de l'employe pass�
 }
 
 function affichageFormation() {
+    $id = $_SESSION['id'];
+    $tabInscrits = reqPolyvalente("SELECT formation_F_id FROM inscrits WHERE employe_E_id = \"$id\";");
     $tab = reqPolyvalente("SELECT F_id, F_nom, F_description, F_lieu, F_prerequis, F_date_debut, F_duree FROM formation");
     ?>
     <section>
-    <h3>Affichage de toutes les formations :</h3>
+    <h3>Affichage des formations auxquelles vous n'êtes pas inscrits (fn):</h3>
     <form action="profil.php" method="get">
     <table class="TAB_table">
         <tr>
@@ -77,9 +127,12 @@ function affichageFormation() {
         </tr>
     <?php
     foreach($tab as $line) {
-        $no_id = $line['F_id'];
-        ?>
-            
+        $abc = existe($tabInscrits, $line['F_id']);
+        if($abc == TRUE) {
+            // inscrit à la formation : ne rien mettre
+        } else {
+            $no_id = $line['F_id'];
+            ?>
             <tr>
                 <td><?php echo $no_id; ?></td>
                 <td><?php echo $line['F_nom']; ?></td>
@@ -91,9 +144,22 @@ function affichageFormation() {
                 <td><input type="checkbox" class="TAB_click" name="check[]" value="<?php echo $no_id; ?>"></td>
                 <!-- Là on a une combinaison name/value dans le checkbox. Cela permet de renvoyer la variable ckeck avec une valeur égale à celle de l'id de la formation -->
             </tr>
-        <?php
+            <?php
+        }
     }
-    ?> </table> </form> </section> <?php
+    ?> </table> </form> </section> 
+    <?php
+}
+function existe($tabInscrits, $F_id) {
+    foreach($tabInscrits as $line) {
+        //$Fid = $line["formation_F_id"];
+        if($line["formation_F_id"] == $F_id) {
+            return TRUE;
+        } else {
+            
+        }
+    }
+    return FALSE;
 }
 
 function estPresent2($a, $b) {

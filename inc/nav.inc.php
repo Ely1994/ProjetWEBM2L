@@ -13,11 +13,21 @@
             <a href="#">plop</a>
         </div>
     </div>
-    <div class="NAA_cont-drop"> <!-- affiché si utilisateur connecté et avec droits avancés -->
-        <a class="NAA_lien" href="./index.php">Accès patron</a>
-        <div class="NAA_list-lien">
-            <a href="#">Le parton c le boss</a>
-            <a href="#">Le gros gros boss</a>
-        </div>
-    </div> 
+    <?php
+    if(isset($_SESSION['login']) && isset($_SESSION['mdp'])) {
+        $abc = estGrade($_SESSION['id']);
+        if(estGrade($_SESSION['id']) == true) {
+            ?>
+            <div class="NAA_cont-drop"> <!-- affiché si utilisateur connecté et avec droits avancés -->
+            <a class="NAA_lien" href="./index.php">Accès patron</a>
+                <div class="NAA_list-lien">
+                    <a href="#">Le parton c le boss</a>
+                </div>
+            </div> 
+            <?php
+        } else {
+
+        }
+    }
+    ?>
 </nav>

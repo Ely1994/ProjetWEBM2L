@@ -12,6 +12,13 @@ footer {
     font-size: 15px;
     color: white;
 }
+.FOT_lien {
+    text-decoration: none;
+    color: white;
+}
+.FOT_lien:hover  {
+    text-decoration: underline;
+}
 .FOL_cont-lien {
     margin-top: 15px;
     background-color: #111;

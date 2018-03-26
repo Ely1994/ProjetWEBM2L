@@ -83,6 +83,11 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
     </section>
 
     <section>
+        <h3>Liste des formations qui sont validés (2)</h3><!-- I_ = 2 -->
+        <?php formationValides($_SESSION['id']); ?>
+    </section>
+
+    <section>
             <p>Tu en as marre de tes cookies ? clique 
             <input type="button" value="ici" onclick="alerte()">
              pour donner tout tes cookies à Darth Jar Jar Binks.</p>
