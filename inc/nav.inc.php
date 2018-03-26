@@ -19,7 +19,7 @@
         if(estGrade($_SESSION['id']) == true) {
             ?>
             <div class="NAA_cont-drop"> <!-- affiché si utilisateur connecté et avec droits avancés -->
-            <a class="NAA_lien" href="./index.php">Accès patron</a>
+            <a class="NAA_lien" href="./fenattente.php">F en attente</a>
                 <div class="NAA_list-lien">
                     <a href="#">Le parton c le boss</a>
                 </div>

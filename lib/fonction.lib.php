@@ -106,6 +106,45 @@ function chopId($login, $mdp) { // retourne la valeur de l'id de l'employe pass�
     return $abc;
 }
 
+function allFormationAttente() {
+    $tabAllForm = reqPolyvalente("SELECT F_id, F_nom, F_description, F_lieu, F_prerequis, F_date_debut, F_duree FROM formation INNER JOIN inscrits ON formation.F_id = inscrits.formation_F_id WHERE I_statut = '1';");
+    ?>
+    <form action="profil.php" method="get">
+    <table class="TAB_table">
+        <tr>
+            <th>Id</th>
+            <th>nom</th>
+            <th>Description</th>
+            <th>Lieu</th>
+            <th>Prérequis</th>
+            <th>Date_début</th>
+            <th>Durée</th>
+            <th>Valider</th>
+            <th>Refuser</th>
+        </tr>
+    <?php
+    foreach($tabAllForm as $line) {        
+        $no_id = $line['F_id'];
+        ?>
+        <tr>
+            <td><?php echo $no_id; ?></td>
+            <td><?php echo $line['F_nom']; ?></td>
+            <td><?php echo $line['F_description']; ?></td>
+            <td><?php echo $line['F_lieu']; ?></td>
+            <td><?php echo $line['F_prerequis']; ?></td>
+            <td><?php echo $line['F_date_debut']; ?></td>
+            <td><?php echo $line['F_duree']; ?></td>
+            <td><input class="TAB_submit" name="<?php echo $_SESSION['id'];?>/<?php echo $no_id;?>" type="submit" value="Accepter"></td>
+            <td><input class="TAB_submit" name="<?php echo $_SESSION['id'];?>/<?php echo $no_id;?>" type="submit" value="Refuser"></td>
+            <!-- Là on a une combinaison name/value dans le checkbox. Cela permet de renvoyer la variable ckeck avec une valeur égale à celle de l'id de la formation -->
+        </tr>
+        <?php
+        
+    }
+    ?> </table> </form>
+    <?php
+}
+
 function affichageFormation() {
     $id = $_SESSION['id'];
     $tabInscrits = reqPolyvalente("SELECT formation_F_id FROM inscrits WHERE employe_E_id = \"$id\";");
