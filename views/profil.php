@@ -76,6 +76,23 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
             echo "Vous n'avez pas check";
         }
             ?>
+
+        <!-- On regarde si le table/requete allFormationAttente() marche. -->
+        <?php
+            if(isset($_POST['Accepter'])) {
+                // Fait changer le statut de la formation à 2.
+                $tab36 = explode("/", $_POST['Accepter']);
+                // $tab36[0] = employe id, $tab36[1] = formation id, $tab36[2] = Accepter
+                $req = reqPolyvalente("UPDATE inscrits SET I_statut = '2' WHERE formation_F_id = $tab36[1] AND employe_E_id = $tab36[0];");
+            } else if(isset($_POST['Refuser'])) {
+                // Fait supprime la demande de formation
+                $tab36 = explode("/", $_POST['Refuser']);
+                // $tab36[0] = employe id, $tab36[1] = formation id, $tab36[2] = Refuser
+                $req = reqPolyvalente("DELETE FROM inscrits WHERE employe_E_id = 1 AND formation_F_id = $tab36[1] AND I_statut = $tab36[0];");
+            } else {
+                //N'existe pas, on ne fait rien.
+            }
+        ?>
     </section>
     <section>
         <h3>Liste des formations en attente de validation</h3><!-- I_ = 1 -->

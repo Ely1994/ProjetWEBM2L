@@ -35,7 +35,7 @@ if(isset($_COOKIE['darkcookie'])==TRUE) { // On s'occupe du dark cookie
             <div class="SE1_titre">Page où tu peux valider des formation.</div>
         </section>
         <section>
-            <div>hop : </div>
+            <div>Liste des demandes de formations, qui peuvent être acceptés ou refusés : </div>
             <?php allFormationAttente(); ?>
         </section>
         <?php include '../inc/footer.inc.php'; ?>

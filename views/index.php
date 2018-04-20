@@ -8,7 +8,7 @@ include_once "../old_ones/Livre.inc.php";
 include_once "../old_ones/Librairie.inc.php";
 
 // appel redirection
-if(!isset($_SESSION['login']) && isset($_SESSION['mdp'])) {
+if(!isset($_SESSION['login']) && !isset($_SESSION['mdp'])) {
     redirection('http://localhost/Try8/Try8/views/connexion.php');
 }
 // incrementation cookie (LIGHT)

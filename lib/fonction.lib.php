@@ -1,6 +1,7 @@
 <?php
 include_once 'connexion.lib.php';
 
+// crée un TAB qui affiche les formations.
 function formationAttente($id) {
     $tab = reqPolyvalente("SELECT F_id, F_nom, F_description, F_lieu, F_prerequis, F_date_debut, F_duree FROM formation INNER JOIN inscrits ON formation.F_id = inscrits.formation_F_id WHERE employe_E_id = \"$id\" AND I_statut = '1' ");
     // "SELECT formation_F_id, employe_E_id, I_statut FROM inscrits WHERE employe_E_id = \"$id\" AND I_statut = '1';"
@@ -40,6 +41,7 @@ function formationAttente($id) {
     ?> <table> <?php
 }
 
+// Selectionne et affiche la table employe pour une personne (id).
 function formationValides($id) {
     $tab = reqPolyvalente("SELECT F_id, F_nom, F_description, F_lieu, F_prerequis, F_date_debut, F_duree FROM formation INNER JOIN inscrits ON formation.F_id = inscrits.formation_F_id WHERE employe_E_id = \"$id\" AND I_statut = '2';");
     // "SELECT formation_F_id, employe_E_id, I_statut FROM inscrits WHERE employe_E_id = \"$id\" AND I_statut = '1';"
@@ -107,9 +109,9 @@ function chopId($login, $mdp) { // retourne la valeur de l'id de l'employe pass�
 }
 
 function allFormationAttente() {
-    $tabAllForm = reqPolyvalente("SELECT F_id, F_nom, F_description, F_lieu, F_prerequis, F_date_debut, F_duree FROM formation INNER JOIN inscrits ON formation.F_id = inscrits.formation_F_id WHERE I_statut = '1';");
+    $tabAllForm = reqPolyvalente("SELECT F_id, F_nom, F_description, F_lieu, F_prerequis, F_date_debut, F_duree, E_login, E_id FROM formation INNER JOIN inscrits ON formation.F_id = inscrits.formation_F_id INNER JOIN employe ON employe.E_id = inscrits.employe_E_id WHERE I_statut = '1';");
     ?>
-    <form action="profil.php" method="get">
+    <form action="profil.php" method="post">
     <table class="TAB_table">
         <tr>
             <th>Id</th>
@@ -119,6 +121,7 @@ function allFormationAttente() {
             <th>Prérequis</th>
             <th>Date_début</th>
             <th>Durée</th>
+            <th>Personne</th>
             <th>Valider</th>
             <th>Refuser</th>
         </tr>
@@ -134,8 +137,9 @@ function allFormationAttente() {
             <td><?php echo $line['F_prerequis']; ?></td>
             <td><?php echo $line['F_date_debut']; ?></td>
             <td><?php echo $line['F_duree']; ?></td>
-            <td><input class="TAB_submit" name="<?php echo $_SESSION['id'];?>/<?php echo $no_id;?>" type="submit" value="Accepter"></td>
-            <td><input class="TAB_submit" name="<?php echo $_SESSION['id'];?>/<?php echo $no_id;?>" type="submit" value="Refuser"></td>
+            <td><?php echo $line['E_login']; ?></td>
+            <td><input class="TAB_submit" name="Accepter" type="submit" value="<?php echo $line['E_id'];?>/<?php echo $no_id;?>/Accepter"></td>
+            <td><input class="TAB_submit" name="Refuser" type="submit" value="<?php echo $line['E_id'];?>/<?php echo $no_id;?>/Refuser"></td>
             <!-- Là on a une combinaison name/value dans le checkbox. Cela permet de renvoyer la variable ckeck avec une valeur égale à celle de l'id de la formation -->
         </tr>
         <?php
@@ -153,24 +157,24 @@ function affichageFormation() {
     <section>
     <h3>Affichage des formations auxquelles vous n'êtes pas inscrits (fn):</h3>
     <form action="profil.php" method="get">
-    <table class="TAB_table">
-        <tr>
-            <th>Id</th>
-            <th>nom</th>
-            <th>Description</th>
-            <th>Lieu</th>
-            <th>Prérequis</th>
-            <th>Date_début</th>
-            <th>Durée</th>
-            <th><input class="TAB_submit" type="submit" value="Sélectionner"></th>
-        </tr>
-    <?php
-    foreach($tab as $line) {
-        $abc = existe($tabInscrits, $line['F_id']);
-        if($abc == TRUE) {
-            // inscrit à la formation : ne rien mettre
-        } else {
-            $no_id = $line['F_id'];
+        <table class="TAB_table">
+            <tr>
+                <th>Id</th>
+                <th>nom</th>
+                <th>Description</th>
+                <th>Lieu</th>
+                <th>Prérequis</th>
+                <th>Date_début</th>
+                <th>Durée</th>
+                <th><input class="TAB_submit" type="submit" value="Sélectionner"></th>
+            </tr>
+        <?php
+            foreach($tab as $line) {
+                $abc = existe($tabInscrits, $line['F_id']);
+                if($abc == TRUE) {
+                    // inscrit à la formation : ne rien mettre
+                } else {
+                    $no_id = $line['F_id'];
             ?>
             <tr>
                 <td><?php echo $no_id; ?></td>
@@ -217,4 +221,5 @@ function lheure() {
     echo "il est $heure";
 }
     
+
 ?>
