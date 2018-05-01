@@ -62,18 +62,13 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
     </section>
     <section>
         <?php
+        // ici on teste si le variable check qui s'occume de la demande de validation de la formation existe :
         if(isset($_GET['check'])) {
             foreach($_GET['check'] as $ident) {
-                if(jeminscrit($ident, $_SESSION['id']) == 0) {
-                    
-                } else {
-                    echo "AAA";
-                }
-                
-                echo $ident."\n";
+                jeminscrit($ident, $_SESSION['id']);
             }
         } else {
-            echo "Vous n'avez pas check";
+            // n'existe pas : la personne n'est pas allé sur cette page en cochant des formations. 
         }
             ?>
 
@@ -88,12 +83,21 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
                 // Fait supprime la demande de formation
                 $tab36 = explode("/", $_POST['Refuser']);
                 // $tab36[0] = employe id, $tab36[1] = formation id, $tab36[2] = Refuser
-                $req = reqPolyvalente("DELETE FROM inscrits WHERE employe_E_id = 1 AND formation_F_id = $tab36[1] AND I_statut = $tab36[0];");
+                $req = reqPolyvalente("DELETE FROM inscrits WHERE I_statut = 1 AND formation_F_id = $tab36[1] AND employe_E_id = $tab36[0];");
+                // puis rends les crédits :
+                $tabcreds = reqPolyvalente("SELECT F_credits FROM formation WHERE F_id = \"$tab36[1]\";");
+                $creds = $tabcreds[0]['F_credits'];
+                addCredits($creds, $_SESSION['id']);
             } else {
                 //N'existe pas, on ne fait rien.
             }
+            $E_id = $_SESSION['id'];
+            $Tcreds = reqPolyvalente("SELECT E_credits FROM employe WHERE E_id = \"$E_id\";");
+            $Ecreds = $Tcreds[0]['E_credits'];
         ?>
+        <p>Vous disposez de <?php echo $Ecreds; ?> crédits.</p>
     </section>
+
     <section>
         <h3>Liste des formations en attente de validation</h3><!-- I_ = 1 -->
         <?php formationAttente($_SESSION['id']); ?>

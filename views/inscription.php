@@ -29,8 +29,8 @@ include_once '../lib/fonction.lib.php';
             redirection('http://localhost/Try8/Try8/views/profil.php');
         } elseif (isset($_POST['inscription']) || isset($_POST['ins-login']) && isset($_POST['ins-motdepasse'])) {
             // on vérifie que le login n'existe pas :
-            $log = $_POST['ins-login'];
-            $cod = $_POST['ins-motdepasse'];
+            $log = htmlspecialchars($_POST['ins-login']);
+            $cod = htmlspecialchars($_POST['ins-motdepasse']);
             $lelogin = reqPolyvalente("SELECT E_login FROM employe WHERE E_login = '$log';");
             if(count($lelogin) >= 1) {
                 echo "Le pseudo que vous avez entré existe déjà.";

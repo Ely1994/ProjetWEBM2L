@@ -3,7 +3,7 @@ include_once 'connexion.lib.php';
 
 // crée un TAB qui affiche les formations.
 function formationAttente($id) {
-    $tab = reqPolyvalente("SELECT F_id, F_nom, F_description, F_lieu, F_prerequis, F_date_debut, F_duree FROM formation INNER JOIN inscrits ON formation.F_id = inscrits.formation_F_id WHERE employe_E_id = \"$id\" AND I_statut = '1' ");
+    $tab = reqPolyvalente("SELECT F_id, F_nom, F_description, F_lieu, F_prerequis, F_date_debut, F_duree, F_credits FROM formation INNER JOIN inscrits ON formation.F_id = inscrits.formation_F_id WHERE employe_E_id = \"$id\" AND I_statut = '1' ");
     // "SELECT formation_F_id, employe_E_id, I_statut FROM inscrits WHERE employe_E_id = \"$id\" AND I_statut = '1';"
     ?>
     <table class="TAB_table">
@@ -15,12 +15,13 @@ function formationAttente($id) {
         <th>Prérequis</th>
         <th>Date_début</th>
         <th>Durée</th>
+        <th>Crédits</th>
     </tr>
     <?php
     if($tab == array()) {
         ?>
         <tr>
-            <td colspan="7">Vous n'avez aucune formation en attente de validation</td>
+            <td colspan="8">Vous n'avez aucune formation en attente de validation</td>
         </tr>
         <?php
     } else {
@@ -34,6 +35,7 @@ function formationAttente($id) {
                 <td><?php echo $line['F_prerequis']; ?></td>
                 <td><?php echo $line['F_date_debut']; ?></td>
                 <td><?php echo $line['F_duree']; ?></td>
+                <td><?php echo $line['F_credits']; ?></td>
             </tr>
             <?php
         }
@@ -43,7 +45,7 @@ function formationAttente($id) {
 
 // Selectionne et affiche la table employe pour une personne (id).
 function formationValides($id) {
-    $tab = reqPolyvalente("SELECT F_id, F_nom, F_description, F_lieu, F_prerequis, F_date_debut, F_duree FROM formation INNER JOIN inscrits ON formation.F_id = inscrits.formation_F_id WHERE employe_E_id = \"$id\" AND I_statut = '2';");
+    $tab = reqPolyvalente("SELECT F_id, F_nom, F_description, F_lieu, F_prerequis, F_date_debut, F_duree, F_credits FROM formation INNER JOIN inscrits ON formation.F_id = inscrits.formation_F_id WHERE employe_E_id = \"$id\" AND I_statut = '2';");
     // "SELECT formation_F_id, employe_E_id, I_statut FROM inscrits WHERE employe_E_id = \"$id\" AND I_statut = '1';"
     ?>
     <table class="TAB_table">
@@ -55,12 +57,13 @@ function formationValides($id) {
         <th>Prérequis</th>
         <th>Date_début</th>
         <th>Durée</th>
+        <th>Credits</th>
     </tr>
     <?php
     if($tab == array()) {
         ?>
         <tr>
-            <td colspan="7">Vous n'avez aucune formation en attente de validation</td>
+            <td colspan="8">Vous n'avez aucune formation en attente de validation</td>
         </tr>
         <?php
     } else {
@@ -74,6 +77,7 @@ function formationValides($id) {
                 <td><?php echo $line['F_prerequis']; ?></td>
                 <td><?php echo $line['F_date_debut']; ?></td>
                 <td><?php echo $line['F_duree']; ?></td>
+                <td><?php echo $line['F_credits']; ?></td>
             </tr>
             <?php
         }
@@ -95,11 +99,27 @@ function jeminscrit($F_id, $E_id) {
     if($valeur == array()) {
         // l'employe n'existe pas : il faut l'ajouter.
         insertionPolyvalente("INSERT INTO inscrits VALUES (\"$F_id\", \"$E_id\", '1');");
-        echo "La demande de formationn à bien été prise en compte.s";
+        echo "La demande de formation à bien été prise en compte (n°$F_id).<br>";
+        //maintenant on gère les crédits :
+        $tabcreds = reqPolyvalente("SELECT F_credits FROM formation WHERE F_id = \"$F_id\";");
+        $creds = $tabcreds[0]['F_credits'];
+        removeCredits($creds, $E_id);
     } else {
-        // l'employe existe : .  il n'y a rien à faire (option innacessible/impossible quand site fini)
+        // l'employe existe : il n'y a rien à faire (option qui peut arriver si l'utilisateur recharge la page.)
         echo "ERREUR : DEJA EXISTANT.";
     }
+}
+function addCredits($num, $E_id) {
+    $tabcreds = reqPolyvalente("SELECT E_credits FROM employe WHERE E_id = \"$E_id\";");
+    $creds = $tabcreds[0]['E_credits'];
+    $tot = $creds + $num;
+    insertionPolyvalente("UPDATE employe SET E_credits = \"$tot\" WHERE E_id = \"$E_id\";");
+}
+function removeCredits($num, $E_id) {
+    $tabcreds = reqPolyvalente("SELECT E_credits FROM employe WHERE E_id = \"$E_id\";");
+    $creds = $tabcreds[0]['E_credits'];
+    $tot = $creds - $num;
+    insertionPolyvalente("UPDATE employe SET E_credits = \"$tot\" WHERE E_id = \"$E_id\";");
 }
 
 function chopId($login, $mdp) { // retourne la valeur de l'id de l'employe passé en paramètre
@@ -152,7 +172,7 @@ function allFormationAttente() {
 function affichageFormation() {
     $id = $_SESSION['id'];
     $tabInscrits = reqPolyvalente("SELECT formation_F_id FROM inscrits WHERE employe_E_id = \"$id\";");
-    $tab = reqPolyvalente("SELECT F_id, F_nom, F_description, F_lieu, F_prerequis, F_date_debut, F_duree FROM formation");
+    $tab = reqPolyvalente("SELECT F_id, F_nom, F_description, F_lieu, F_prerequis, F_date_debut, F_duree, F_credits FROM formation");
     ?>
     <section>
     <h3>Affichage des formations auxquelles vous n'êtes pas inscrits (fn):</h3>
@@ -166,6 +186,7 @@ function affichageFormation() {
                 <th>Prérequis</th>
                 <th>Date_début</th>
                 <th>Durée</th>
+                <th>Credits</th>
                 <th><input class="TAB_submit" type="submit" value="Sélectionner"></th>
             </tr>
         <?php
@@ -184,8 +205,22 @@ function affichageFormation() {
                 <td><?php echo $line['F_prerequis']; ?></td>
                 <td><?php echo $line['F_date_debut']; ?></td>
                 <td><?php echo $line['F_duree']; ?></td>
-                <td><input type="checkbox" class="TAB_click" name="check[]" value="<?php echo $no_id; ?>"></td>
-                <!-- Là on a une combinaison name/value dans le checkbox. Cela permet de renvoyer la variable ckeck avec une valeur égale à celle de l'id de la formation -->
+                <td><?php echo $line['F_credits']; ?></td>
+                <?php
+                $tabcreds = reqPolyvalente("SELECT E_credits FROM employe WHERE E_id = \"$id\";");
+                $creds = $tabcreds[0]['E_credits'];
+                if($line['F_credits'] > $creds) {
+                    ?>
+                    <td>Vous n'avez pas assez de crédits (<?php echo $creds; ?>)</td>
+                    <?php
+                } else {
+                    ?>
+                    <td><input type="checkbox" class="TAB_click" name="check[]" value="<?php echo $no_id; ?>"></td>
+                    <!-- Là on a une combinaison name/value dans le checkbox. Cela permet de renvoyer la variable ckeck avec une valeur égale à celle de l'id de la formation -->
+                    <?php
+                }
+                ?>
+                
             </tr>
             <?php
         }
