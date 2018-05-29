@@ -58,7 +58,7 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
     <?php include '../inc/header.inc.php'; ?>
     <?php include '../inc/nav.inc.php'; ?>
     <section>
-        <div class="SE1_titre">Bienvenue sur ta page de profil <?php echo $_SESSION['login']; ?>.<?php echo $_SESSION['mdp']; ?><?php echo $_SESSION['id'];?></div>
+        <div class="SE1_titre">Bienvenue sur ta page de profil <?php echo $_SESSION['login']; ?>.<?php //echo $_SESSION['mdp']; ?><?php //echo $_SESSION['id'];?></div>
     </section>
     <section>
         <?php
@@ -107,7 +107,7 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
         <h3>Liste des formations qui sont validés (2)</h3><!-- I_ = 2 -->
         <?php formationValides($_SESSION['id']); ?>
     </section>
-
+    <!--
     <section>
             <p>Tu en as marre de tes cookies ? clique 
             <input type="button" value="ici" onclick="alerte()">
@@ -115,7 +115,7 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
         </section>
     <section>
         <div>
-            Salut. Je suis ton compteur de cookies. Tu dispose de <?php echo $_COOKIE['holycookie']; ?> cookies du bon côté de la force, ainsi que de <?php echo $_COOKIE['darkcookie']; ?> cookies du côté obscur de la force.
+            Salut. Je suis ton compteur de cookies. Tu dispose de <?php //echo $_COOKIE['holycookie']; ?> cookies du bon côté de la force, ainsi que de <?php //echo $_COOKIE['darkcookie']; ?> cookies du côté obscur de la force.
             <?php if($_COOKIE['holycookie'] > $_COOKIE['darkcookie']) {
                 ?> Tu est donc un défenseur des jedi.<?php
             } else {
@@ -124,6 +124,7 @@ if(isset($_COOKIE['holycookie'])==TRUE) {
             ?>
         </div>
     </section>
+    -->
     <?php include '../inc/footer.inc.php'; ?>
 </body>
 </html>

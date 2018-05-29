@@ -7,7 +7,7 @@ résumé : HE, HEL, HET, HEC.
 -->
 <header>
     <div class="HEL_cont-logo">
-        <img id="HEL_logo" src="../doc/607.jpg" alt="Logo : 607 /!\">
+        <img id="HEL_logo" src="../doc/M2llogo.jpg" alt="Magnifique logo">
         <div id="HEL_mymodal">
             <span class="HEL_close">X</span>
             <img id="HEL_modal-img">
