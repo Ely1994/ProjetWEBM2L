@@ -16,7 +16,7 @@ résumé : HE, HEL, HET, HEC.
     </div>
     <div class="HET_cont-titre">
         <h1>M2L - Maison des Ligues de Lorraine</h1>
-        Site crée pour le projet BTS SIO (slam).
+        Site créé pour le projet BTS SIO (slam).
     </div>
 <?php
     if(isset($_SESSION['login'])) {
